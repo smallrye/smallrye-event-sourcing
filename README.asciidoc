@@ -40,5 +40,5 @@ head over to the https://github.com/smallrye/smallrye-event-sourcing project.
 === Building the project
 
 The build environment for this requires a working (together) version of maven and Java.
-Go to the _event-sourcing_ folder and enter `mvn clean package` at the command line. 
+Go to the root folder and enter `mvn clean package` at the command line. 
 
