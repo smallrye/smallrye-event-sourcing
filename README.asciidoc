@@ -145,8 +145,7 @@ change distribution across microservices. Unfortunately "Tools to Make State
 Change Capture, Distribution and Ingestion Easier Across Microservices" is a much
 harder rallying point for a common CDC SPI to supoprt and sounds like a much less
 attractive home to do a proof of concept for CRDT and so on. Hence
-'MicroProfile Event Sourcing' has been chosen. We do not believe there will
-be another MicroProfile Specification that would be better placed to 'own' the name. 
+'Event Sourcing' has been chosen. 
 
 CDC is a whole skill set in itself and involves Database skills and contacts
 to push forwards a common SPI for CDC (which is a longer term aim of this specification).
@@ -312,7 +311,7 @@ Debezium can make use of Kafka Connectors as an environment that is well suited
 to event sourcing. Clustering, sharding, offset management ensuring at-least-once
 delivery and schemas which allow for de-serialisation and type conversion are all
 made easier to build by Kafka connectors. Some of these concerns, for example
-clustering, as not within the scope of MicroProfile Event Sourcing.
+clustering, as not within the scope of this area.
 However in some others Apache Kafka provides clear 'tail-lights' to follow
 either by wrapping function or providing for alternatives where this makes sense.
 
@@ -340,7 +339,7 @@ added by the remote event sourcing message envelope.
 
 This is an interesting value add on top of distributed
 state changes. The before+after+metadata structure of
-MicroProfile Events Sourcing messages would be an ideal
+CDC change event messages would be an ideal
 abstraction on which to support easy to use CRDT
 semantics.
 
@@ -385,7 +384,7 @@ A good start to Event Sourcing is written at https://martinfowler.com/eaaDev/Eve
 [[mrm]]
 === MicroProfile Reactive Messaging Background
 
-Much of the scaffolding that MicroProfile Event Sourcing is built on is the
+Much of the scaffolding that SmallRye Event Sourcing is built on is the
 MicroProfile Reactive Messaging specification. You can find an introduction to
 that specification here: https://github.com/eclipse/microprofile-reactive-messaging/blob/master/spec/src/main/asciidoc/architecture.asciidoc
 
