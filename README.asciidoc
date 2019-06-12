@@ -1,4 +1,6 @@
 //
+// Copyright (c) 2019 Contributors to the Eclipse Foundation
+//
 // See the NOTICE file(s) distributed with this work for additional
 // information regarding copyright ownership.
 //
@@ -15,12 +17,18 @@
 // limitations under the License.
 //
 
-= Microprofile Event Sourcing Specification Proposal Proof of Concept
+= Event Sourcing Ideas
 
 [[intro]]
-== Introduction to MicroProfile Event Sourcing Proposal Idea
+== Introduction 
 
-MicroProfile Event Sourcing allows for the connection of
+This is an ideas document that needs to be mined out
+into issues, some of the text is written as if it
+is a draft proposal for historical reasons
+but the proposal document will only come into
+existence in the MicroProfile sandbox.
+
+Smallrye Event Sourcing allows for the connection of
 heterogeneous Microservices' state using MicroProfile
 Reactive Messaging as a conduit to transport state change events. 
 
@@ -31,7 +39,7 @@ The events contain generated metadata that allows them to be
 easily processed by receiving microservices to 
 update state data or trigger application work. 
 
-MicroProfile Event Sourcing can work in a 'plug-and-play'
+Smallrye Event Sourcing can work in a 'plug-and-play'
 fashion with existing Change Data Capture (CDC) frameworks like
 Debezium, existing connector ecosystems like Apache Kafka
 Connectors and existing reactive streams sources and sinks
@@ -45,7 +53,7 @@ Type converters operate in the same way as
 the MicroProfile Config specification and 
 type converter code can be shared or repurposed. 
 
-However, MicroProfile Event Sourcing is not an event sourcing framework.
+However, Smallrye Event Sourcing is not an event sourcing framework.
 It simply provides very easy to use mechanisms for
 creating, distributing and handling state changes.
 It has no opinion on the data consistency or microservice
@@ -91,7 +99,7 @@ There are no current standards for database change data capture support SPIs.
 This makes it more expensive to implement or re-implement change data capture solutions. 
 It also provides less incentive for database vendors to provide and support CDC
 SPIs as the market for what can make use of them is fragmented. 
-The value chain MicroProfile
+The value chain Smallrye
 Event Sourcing builds is likely to increase usage of CDC
 and provide incentive for database vendors to support it.
 A CDC SPI is a natural follow on aspect, that can be done in sync with
@@ -115,7 +123,7 @@ The MicroProfile Reactive Messaging specification allows applications to
 be written that can be easily moved from one Connector (such as Kafka) to another
 (such as a cloud provider's proprietary equivalent) with no code changes.
 
-Similarly MicroProfile Event Sourcing allows for a cross vendor home
+Similarly Smallrye Event Sourcing allows for a cross vendor home
 for event sourcing concerns that exist today such as CDC, connectors, schemas, converters
 etc. It also provides an environment for technology that 
 can be provided in the future such as transactional outbox connectors,
@@ -137,10 +145,8 @@ change distribution across microservices. Unfortunately "Tools to Make State
 Change Capture, Distribution and Ingestion Easier Across Microservices" is a much
 harder rallying point for a common CDC SPI to supoprt and sounds like a much less
 attractive home to do a proof of concept for CRDT and so on. Hence
-'MicroProfile Event Sourcing' has been chosen. We do not believe there will ever
-be another MicroProfile Specification that will be closer to 
-helping the concerns raised in implementing the 'Event Sourcing' approach.
-
+'MicroProfile Event Sourcing' has been chosen. We do not believe there will
+be another MicroProfile Specification that would be better placed to 'own' the name. 
 
 CDC is a whole skill set in itself and involves Database skills and contacts
 to push forwards a common SPI for CDC (which is a longer term aim of this specification).
@@ -163,6 +169,12 @@ using MicroProfile reactive streams operators.
 The proposal will allow for a variety of reactive messaging connectors to be
 used to transport microservices' state changes including those with various
 characteristics such as reactive back-pressure, better legacy integration and so on.
+
+Debezium could begin to benefit from any emerging reactive messaging ecosystem.
+For example there is a case for Debezium supporting _Cloud Events_
+https://issues.jboss.org/browse/DBZ-1292
+but this work could perhaps better be done in the MicroProfile Reactive Messaging
+layer and so be of benefit to multiple users of reactive messaging.
 
 Many write mirroring systems can operate remote confirmation at different stages -
 for example: acknowledge on local save, acknowledge on remote save and
@@ -304,6 +316,17 @@ clustering, as not within the scope of MicroProfile Event Sourcing.
 However in some others Apache Kafka provides clear 'tail-lights' to follow
 either by wrapping function or providing for alternatives where this makes sense.
 
+[[cloud-events]]
+=== Cloud Events
+
+There is an interesting integration possibility with _Cloud Events._
+This is discussed from a Debezium perspective here:
+https://issues.jboss.org/browse/DBZ-1292
+"wrap the existing Debezium messages into a CloudEvents envelope"
+If this work was done using MicroProfile reactive messaging
+it may be possible that it could be reused by multiple
+frameworks and customers rather than solely by Debezium. 
+
 [[sinks]]
 == Event Handling
 
@@ -376,29 +399,4 @@ of the origins are in newsgroup conversations listed below.
 Feel free to add to any active threads.
 
 https://groups.google.com/d/msg/microprofile/F0ehhd1MFMc/e2DLvf5tBAAJ
-
-== Event Sourcing
-
-For a general definition of 'Event Sourcing' see: https://martinfowler.com/eaaDev/EventSourcing.html
-
-This project is a proposal for MicroProfile Event Sourcing built on top of
-MicroProfile Reactive Messaging: https://github.com/eclipse/microprofile-reactive-messaging
-
-It also makes a great deal of reference to the ideas and code built up as part of
-the Debezium and Apache Kafka projects.
-
-There is prototyping and dicusssion work going on in this repository: 
-https://github.com/smallrye/smallrye-event-sourcing
-
-=== Contributing
-
-If you are interested in contributing to this porposal feel free to fork and raise issues or PRs.
-
-If you are interested in contributing to a prototype implementation then please
-head over to the https://github.com/smallrye/smallrye-event-sourcing project. 
-
-=== Building the project
-
-The build environment for this requires a working (together) version of maven and Java.
-Go to the root folder and enter `mvn clean package` at the command line. 
 
