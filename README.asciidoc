@@ -118,8 +118,21 @@ is a benefit for users that ultimately lifts all libraries' performance.
 
 === Why is This Not a Dot Release on Reactive Messaging?
 
+It would be possible to make a strong case for this just being
+one or more features added to MicroProfile reactive messaging.
+We probably do need features there to support
+some aspects (for example, the ability to nest Message
+envelopes and transforms in order to be able to 
+cleanly separate concerns, and the ability to buffer messages
+in a way that interacts in a defined way with acknowledgements).
+However, until we shake out some solid patterns of what
+works well, 'event sourcing' for state distribution
+will be seen as too custom a set of patterns to be
+supported with standardised plumbing and so work would
+face resistance if done in the reactive messaging group.
+
 'Event Sourcing' is a well recognised term and understood concept.
-As this specification is not an Event Sourcing Framework or opinionated
+As this work is not an Event Sourcing Framework or opinionated
 architectural approach. One can reasonably argue that it just makes
 event sourcing easier and is more like a set of tools to enable state
 change distribution across microservices. Unfortunately "Tools to Make State
@@ -129,7 +142,7 @@ attractive home to do a proof of concept for CRDT and so on. Hence
 'Event Sourcing' has been chosen. 
 
 CDC is a whole skill set in itself and involves Database skills and contacts
-to push forwards a common SPI for CDC (which is a longer term aim of this specification).
+to push forwards a common SPI for CDC (which is a longer term aim of this work).
 These skills and contact exist already but not in the MicroProfile
 Reactive Messaging Team.
 
@@ -314,6 +327,15 @@ On the remote end, an incoming reactive messaging Kafka connector is used to pic
 up the event change events from the appropriate topics in the Kafka server. These
 are fed onto a reactive streams processor that understand the change event meta-data wrapping
 added by the remote event sourcing message envelope.
+
+=== The 'Inbox' Pattern
+
+One can see an example of a hand crafted change event inbox here:
+https://github.com/debezium/debezium-examples/blob/master/outbox/shipment-service/src/main/java/io/debezium/examples/outbox/shipment/facade/KafkaEventConsumer.java
+
+It would be interesting to explore how much of that could be
+automated with something like {@code @Incoming('orders') handleOrder(Message<ChangeEvent<Order>> event) }
+and whether that would be useful to users.
 
 [[CRDT]]
 === Conflict-free Replication Data Types (CRDT)
