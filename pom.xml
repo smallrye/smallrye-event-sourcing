@@ -5,12 +5,11 @@
   <parent>
     <groupId>io.smallrye</groupId>
     <artifactId>smallrye-parent</artifactId>
-    <version>6</version>
+    <version>8-SNAPSHOT</version>
   </parent>
 
-  <groupId>io.smallrye.event-sourcing</groupId>
   <artifactId>smallrye-event-sourcing</artifactId>
-  <version>0.0.10-SNAPSHOT</version>
+  <version>1.0.0-SNAPSHOT</version>
   <packaging>jar</packaging>
 
   <name>Smallrye Event Sourcing</name>
@@ -31,68 +30,11 @@
     </license>
   </licenses>
 
-  <developers>
-  </developers>
-
   <scm>
     <connection>scm:git:git@github.com:smallrye/smallrye-event-sourcing.git</connection>
     <developerConnection>scm:git:git@github.com:smallrye/smallrye-event-sourcing.git</developerConnection>
     <url>https://github.com/smallrye/smallrye-event-sourcing</url>
     <tag>HEAD</tag>
   </scm>
-
-
-  <properties>
-  </properties>
-
-  <modules>
-  </modules>
-
-  <dependencyManagement>
-    <dependencies>
-    </dependencies>
-  </dependencyManagement>
-
-  <dependencies>
-  </dependencies>
-
-  <build>
-    <defaultGoal>clean install</defaultGoal>
-
-    <pluginManagement>
-      <plugins>
-        <plugin>
-          <groupId>org.apache.maven.plugins</groupId>
-          <artifactId>maven-javadoc-plugin</artifactId>
-        </plugin>
-        <plugin>
-          <groupId>org.apache.maven.plugins</groupId>
-          <artifactId>maven-jar-plugin</artifactId>
-        </plugin>
-      </plugins>
-    </pluginManagement>
-
-    <plugins>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-javadoc-plugin</artifactId>
-        <executions>
-          <execution>
-            <id>default-cli</id>
-            <goals>
-              <goal>aggregate</goal>
-            </goals>
-            <configuration>
-              <reportOutputDirectory>target/generated-docs/apidocs</reportOutputDirectory>
-              <excludePackageNames>*.quickstart:*.example:*.snippets</excludePackageNames>
-            </configuration>
-          </execution>
-        </executions>
-        <configuration>
-          <additionalOptions>-Xdoclint:none</additionalOptions>
-        </configuration>
-      </plugin>
-    </plugins>
-  </build>
 
 </project>
