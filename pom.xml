@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <parent>
+    <groupId>io.smallrye</groupId>
+    <artifactId>smallrye-parent</artifactId>
+    <version>7</version>
+  </parent>
+
+  <artifactId>smallrye-event-sourcing</artifactId>
+  <version>1.0.0-SNAPSHOT</version>
+  <packaging>jar</packaging>
+
+  <name>Smallrye Event Sourcing</name>
+  <description>An event sourcing proof of concept built on MicroProfile Reactive Messaging</description>
+
+  <inceptionYear>2019</inceptionYear>
+  <organization>
+    <name>SmallRye</name>
+    <url>https://wwww.smallrye.io</url>
+  </organization>
+
+  <licenses>
+    <license>
+      <name>Apache License, Version 2.0</name>
+      <url>https://www.apache.org/licenses/LICENSE-2.0.txt</url>
+      <distribution>repo</distribution>
+      <comments>A business-friendly OSS license</comments>
+    </license>
+  </licenses>
+
+  <scm>
+    <connection>scm:git:git@github.com:smallrye/smallrye-event-sourcing.git</connection>
+    <developerConnection>scm:git:git@github.com:smallrye/smallrye-event-sourcing.git</developerConnection>
+    <url>https://github.com/smallrye/smallrye-event-sourcing</url>
+    <tag>HEAD</tag>
+  </scm>
+
+</project>

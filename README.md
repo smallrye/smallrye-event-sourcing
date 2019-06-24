@@ -1,1 +1,0 @@
-# smallrye-event-sourcing
